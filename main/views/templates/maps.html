@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load leaflet_tags %}
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>maps</title>
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <style>
+        .leaflet-container { height: 80%; }
+    </style>
 </head>
 <body>
-
+    <h1 align="center">"Clicking on the map will create a marker"</h1>
+    {% leaflet_map "yourmap" callback="window.map_init_basic" %}
 </body>
 </html>
