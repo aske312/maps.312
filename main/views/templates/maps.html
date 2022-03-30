@@ -1,17 +1,48 @@
 <!DOCTYPE html>
-{% load leaflet_tags %}
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>maps</title>
-    {% leaflet_js %}
-    {% leaflet_css %}
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-        .leaflet-container { height: 80%; }
+			#mapid{
+			    float: center;
+				height: 400px;
+				margin: 0 auto;
+			}
     </style>
 </head>
 <body>
     <h1 align="center">"Clicking on the map will create a marker"</h1>
-    {% leaflet_map "yourmap" callback="window.map_init_basic" %}
+    <div id ='mapid'></div>
+    <script>
+        var mapOptions = {
+            center: [53.9, 27.6],
+            zoom: 10
+        }
+
+        var map = new L.map('mapid', mapOptions);
+        var layer = new L.TileLayer('http://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png');
+	    map.addLayer(layer);
+
+        function onMapClick(e) {
+            var marker = L.marker(e.latlng).addTo(map)
+                .bindPopup('Marker by user').openPopup();
+            $.ajax({type: 'POST',
+                url: '',
+                data: {points: e.latlng.toString()},
+                success: function (response) {
+                if (response.result === 'OK') {
+                    if (response.data && typeof(response.data) === 'object') {
+                    }
+                } else {}
+                }
+            });
+        }
+        map.on('click', onMapClick);
+    </script>
+
 </body>
 </html>

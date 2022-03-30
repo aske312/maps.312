@@ -1,7 +1,9 @@
-# views maps
+# views result
+
 from django.shortcuts import render
+from .models import MapsMarker
 
 
 def views(request, *args, **kwarg):
-    print('Views page')
-    return render(request, 'views.html', {})
+    pointers = MapsMarker.objects.all()
+    return render(request, 'views.html', {'pointers': pointers})

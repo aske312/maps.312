@@ -37,9 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'leaflet',
-    'djgeojson',
     'views',
 ]
 
@@ -81,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mapspointner',
-        'USER': 'admin',
-        'PASSWORD': '123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER': 'USER_BASE',
+        'PASSWORD': 'PASSWORD_USER',
+        'HOST': 'HOST_BASE',
+        'PORT': 'PORT',
     }
 }
 

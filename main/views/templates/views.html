@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html>
+   <head>
+      <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+   </head>
+   <body>
+      <table>
+         {% for pointer in pointers %}
+         <tr class='success'>
+            <td>{{ pointer.id }}</td>
+            <td>{{ pointer.pointer }}</td>
+         </tr>
+         {% endfor %}
+      </table>
+   </body>
 </html>
